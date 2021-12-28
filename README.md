@@ -68,3 +68,65 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+# React 시작하기
+
+[Create React App](https://github.com/facebook/create-react-app)를 참고하여 만들어졌어요.
+
+## 제공되는 스립트
+
+프로젝트 디렉토리에서 실행할 수 있는 것들:
+
+### `npm start`
+
+development mode로 코드를 실행함.\
+[http://localhost:3000](http://localhost:3000)를 브라우저로 열면 개발중인 웹페이지를 볼 수 있어요.
+
+코드를 수정하면 웹페이지에서도 업데이트 됐어요.\
+콘솔에서 lint error도 볼 수 있어요.
+
+### `npm test`
+
+test runner를 interactive watch mode로 실행함.\
+자세한 정보는 [running tests](https://facebook.github.io/create-react-app/docs/running-tests) 참고.
+
+### `npm run build`
+
+`build` 폴더에 production을 위해 앱을 빌드함.\
+React를 production mode로 번들해주며 성능을 위해 build를 최적화 해줌.
+
+build는 minified(불필요한 부분을 삭제함) 되고 파일 이름에 hash가 추가됨.\
+인제 앱이 deploy된 준비가 끝남!
+
+자세한 정보는 [deployment](https://facebook.github.io/create-react-app/docs/deployment) 참고.
+
+## 더 배우기
+
+[Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started)에서 더 많은 내용을 배울 수 있어요.
+
+React를 더 배우려면, [React documentation](https://reactjs.org/)을 보세요.
+
+### Code Splitting
+
+이 부분은 여기로 옮겨졌어요: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+
+### Bundle Size 분석하기
+
+이 부분은 여기로 옮겨졌어요: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+
+### Progressive Web App 만들기
+
+이 부분은 여기로 옮겨졌어요: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+이 부분은 여기로 옮겨졌어요: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+이 부분은 여기로 옮겨졌어요: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build`가 minify하는 데 실패했어요
+
+이 부분은 여기로 옮겨졌어요: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

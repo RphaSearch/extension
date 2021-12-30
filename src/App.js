@@ -10,8 +10,9 @@ function App() {
 
     axios
       .post("/submit", {
-        context: context.value,
-        question: question.value,
+        context: context.current.value,
+        question: question.current.value,
+        prev_qa: '몰?루'
       })
       .then(function (response) {
         answer.value = response;
@@ -24,13 +25,13 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <label for="context">CONTEXT PARAGRAPH</label>
-        <textarea id="context" name="contexts" rows="5" cols="33"></textarea>
-        <label for="question">QUESTION</label>
+        <label htmlFor="context">CONTEXT PARAGRAPH</label>
+        <textarea id="context" name="context" rows="5" cols="33"></textarea>
+        <label htmlFor="question">QUESTION</label>
         <textarea id="question" name="question" rows="3" cols="33"></textarea>
-        <label for="answer">ANSWER</label>
+        <label htmlFor="answer">ANSWER</label>
         <textarea id="answer" name="answer" rows="3" cols="33"></textarea>
-        <button id="submitButton" onclick={submitButton_click}>
+        <button id="submitButton" onClick={submitButton_click}>
           Submit
         </button>
       </header>

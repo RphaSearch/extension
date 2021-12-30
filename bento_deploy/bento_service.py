@@ -1,5 +1,3 @@
-import json
-
 import bentoml
 from bentoml.adapters import JsonInput, JsonOutput
 from bentoml.frameworks.transformers import TransformersModelArtifact
@@ -26,10 +24,11 @@ class TransformerService(bentoml.BentoService):
         input_text.append(f"c: {context}")
         input_text = " ".join(input_text)
         features = tokenizer([input_text], return_tensors="pt")
-        tokens = model.generate(
-            input_ids=features["input_ids"].to(device),
-            attention_mask=features["attention_mask"].to(device),
-            max_length=64,
-        ).cpu()
-
-        return tokenizer.decode(tokens[0], skip_special_tokens=True)
+        with torch.no_grad():
+            tokens = model.generate(
+                input_ids=features["input_ids"].to(device),
+                attention_mask=features["attention_mask"].to(device),
+                max_length=64,
+            ).cpu()
+        answer = tokenizer.decode(tokens[0], skip_special_tokens=True)
+        return {"answer": answer}

@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import DialogText from "./DialogText";
+
 function Dialog(props) {
   return (
     <>
@@ -17,4 +18,5 @@ function Dialog(props) {
 const mapStateToProps = (state) => {
   return { query: state.search.query, focus: state.search.focus };
 };
+
 export default connect(mapStateToProps)(Dialog);

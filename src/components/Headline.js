@@ -1,4 +1,5 @@
 import { GiAtom } from "react-icons/gi";
+
 export default function Headline() {
   return (
     <div

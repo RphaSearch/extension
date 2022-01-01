@@ -9,6 +9,7 @@ import {
   Htmlupdate,
   Slice,
 } from "../modules/search";
+
 function SearchBar(props) {
   const searchRef = useRef();
   const onCheckEnter = (e) => {
@@ -16,6 +17,7 @@ function SearchBar(props) {
       Search();
     }
   };
+
   function Search() {
     let value = searchRef.current.value;
     if (value !== "") {
@@ -23,6 +25,7 @@ function SearchBar(props) {
       searchRef.current.value = "";
     }
   }
+
   return (
     <>
       <div className="input-group">
@@ -49,9 +52,11 @@ function SearchBar(props) {
     </>
   );
 }
+
 const mapStateToProps = (state) => {
   return state.search;
 };
+
 const mapDispatchToProps = (dispatch) => {
   return {
     onQuestion: (query) => dispatch(Question(query)),
@@ -63,4 +68,5 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(Slice(frontword, word, backword)),
   };
 };
+
 export default connect(mapStateToProps, mapDispatchToProps)(SearchBar);

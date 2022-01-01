@@ -2,6 +2,11 @@
   text-align: center;
 }
 
+<<<<<<< HEAD
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+=======
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -14,42 +19,45 @@
 }
 
 .App-header {
+>>>>>>> ui
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+<<<<<<< HEAD
+=======
 
-  width: 100%;
-  position: fixed;
+  width:100%;
+  position:fixed;
 }
-.App-header-back {
-  background-color: #bbddff;
-  padding: 50px;
-  width: 100%;
+.App-header-back{
+  background-color: #BBDDFF;
+  padding : 50px;
+  width:100%;
   height: 100%;
 }
 .App-body {
-  padding: 50px;
-  padding-top: 250px;
+  padding : 50px;
+  padding-top : 250px;
 }
 .App-link {
   color: #61dafb;
 }
-.Dialog {
+.Dialog{
   width: 100%;
   height: auto;
   color: black;
 }
-.Dialog-A {
+.Dialog-A{
   background-color: blue;
-  color: white;
+  color:white;
 }
-.Dialog-Q {
-  background-color: #bbddff;
+.Dialog-Q{
+  background-color: #BBDDFF;
 
-  color: black;
+  color:black;
 }
 @keyframes App-logo-spin {
   from {
@@ -58,4 +66,5 @@
   to {
     transform: rotate(360deg);
   }
+>>>>>>> ui
 }

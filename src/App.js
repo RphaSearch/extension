@@ -1,13 +1,14 @@
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css'
-import Header from './component/Header'
-import SearchBar from './component/SearchBar';
+import Header from './components/Header'
+import Body from './components/Body'
+import Footer from './components/Footer'
 function App() {
 return (
-    
   <div className="App">
   <Header/>
-  <SearchBar/>
+  <Body/>
+  <Footer/>
   </div>
   );
 }

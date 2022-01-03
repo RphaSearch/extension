@@ -69,6 +69,31 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
 
+## Backend API
+
+### POST /api/v1/answer
+runs question answering on bentoml service
+
+request body:
+{
+    context: context string,
+    prev_qa: list of previous questions and answers: e.g. [question, answer, question, answer...],
+    question: question string
+}
+
+response body:
+{
+    answer: answer string
+}
+
+### GET /api/v1/context?q={query}
+searchs wikipedia and extracts text from article
+
+response body:
+{
+    context: article string
+}
+
 # React 시작하기
 
 [Create React App](https://github.com/facebook/create-react-app)를 참고하여 만들어졌어요.

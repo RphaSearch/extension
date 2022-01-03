@@ -16,42 +16,37 @@ app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "build", "index.html"));
 });
 
+const url = "https://en.wikipedia.org/w/api.php?";
+
 // /api/v1/context?q=query
 app.get("/api/v1/context", (req, res) => {
   const query = req.query.q;
 
-  let url = "https://en.wikipedia.org/w/api.php?";
-
-  let params = {
+  const searchParams = new URLSearchParams({
+    origin: "*",
     action: "query",
     list: "search",
     srsearch: query,
     srwhat: "text",
     srlimit: "1",
     format: "json",
-  };
-
-  url = url + "?origin=*";
-  Object.keys(params).forEach((key) => {
-    url += "&" + key + "=" + params[key];
   });
 
   axios
-    .get(url)
+    .get(url + searchParams)
     .then((response) => {
       response = response.data;
 
-      url =
-        "https://en.wikipedia.org/w/api.php?" +
-        new URLSearchParams({
-          origin: "*",
-          action: "parse",
-          page: `${response.query.search[0].title}`,
-          format: "json",
-        });
-
       axios
-        .get(url)
+        .get(
+          "https://en.wikipedia.org/w/api.php?" +
+            new URLSearchParams({
+              origin: "*",
+              action: "parse",
+              page: `${response.query.search[0].title}`,
+              format: "json",
+            })
+        )
         .then((response) => {
           const html = response.data.parse.text["*"];
           const $ = cheerio.load(html);

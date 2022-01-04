@@ -7,6 +7,15 @@
     "service_worker": "background.js"
   },
   "permissions": ["storage","activeTab", "scripting"],
+  "content_scripts": [
+    {
+      "matches": [
+        "<all_urls>"
+      ],
+      "all_frames": true,
+      "js": ["thirdParty/jquery-3.6.0.min.js", "content-script.js"]
+    }
+  ],
   "action": {
     "default_popup": "popup.html"
   },

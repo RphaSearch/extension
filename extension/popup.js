@@ -1,24 +1,27 @@
-// Initialize button with user's preferred color
-let changeColor = document.getElementById("changeColor");
+document.addEventListener("DOMContentLoaded", () => {
+  const button = document.getElementById("send");
+  const input = document.getElementById("input");
+  const port = chrome.runtime.connect({ name: "question" });
 
-chrome.storage.sync.get("color", ({ color }) => {
-  changeColor.style.backgroundColor = color;
-});
+  button.addEventListener("click", () => {
+    const question = input.value;
+    port.postMessage({ question });
 
-// When the button is clicked, inject setPageBackgroundColor into current page
-changeColor.addEventListener("click", async () => {
-  let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    const newDiv = document.createElement("div");
+    const newP = document.createElement("p");
+    const newContent = document.createTextNode(question);
+    newDiv.className = "container";
+    newP.appendChild(newContent);
+    newDiv.appendChild(newP);
 
-  chrome.scripting.executeScript({
-    target: { tabId: tab.id },
-    function: setPageBackgroundColor,
+    const currentDiv = document.getElementsByClassName("input-container")[0];
+    document.body.insertBefore(newDiv, currentDiv);
+  });
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      button.click();
+    }
   });
 });
-
-// The body of this function will be executed as a content script inside the
-// current page
-function setPageBackgroundColor() {
-  chrome.storage.sync.get("color", ({ color }) => {
-    document.body.style.backgroundColor = color;
-  });
-}

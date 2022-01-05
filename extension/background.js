@@ -5,6 +5,8 @@ let prevQA = [];
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   context = request.context;
+  prevQA = [];
+  console.log({ context, prevQA });
 });
 
 chrome.runtime.onConnect.addListener((port) => {

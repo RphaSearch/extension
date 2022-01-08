@@ -8,6 +8,7 @@ module.exports = {
   entry: {
     popup: "./src/popup.jsx",
     background: "./src/background.js",
+    content: "./src/content.js",
     options: "./src/options.jsx",
   },
   output: {

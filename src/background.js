@@ -4,18 +4,20 @@ let prevQA = [];
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   switch (request.type) {
-    case "context":
+    case "context": {
       context = request.context;
       prevQA = [];
-      console.log({ context, prevQA });
       break;
+    }
 
-    case "getPrevQA":
+    case "getPrevQA": {
       sendResponse({ prevQA });
       break;
+    }
 
-    case "answer":
+    case "answer": {
       const question = request.question;
+      prevQA.push(question);
 
       const url = `http://${process.env.ML_HOST}/answer`;
       const options = {
@@ -31,20 +33,22 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         }),
       };
 
+      let answer;
       fetch(url, options)
         .then((response) => response.json())
         .then((data) => {
-          let answer = data.answer;
-          prevQA.push(question);
+          answer = data.answer;
           prevQA.push(answer);
 
-          port.postMessage({ answer });
+          sendResponse({ answer });
         })
         .catch((error) => console.log(error));
-      break;
+      return true;
+    }
 
-    default:
-      console.log({ message: "something's wrong", response: response });
+    default: {
+      console.log({ message: "something's wrong", request: request });
       break;
+    }
   }
 });

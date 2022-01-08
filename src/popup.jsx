@@ -17,6 +17,12 @@ function App() {
   function addHistory(event) {
     event.preventDefault();
     setHistory((prevHistory) => [...prevHistory, message.current.value]);
+    chrome.runtime.sendMessage(
+      { type: "answer", question: message.current.value },
+      (response) => {
+        setHistory((prev) => [...prev, response.answer]);
+      }
+    );
   }
 
   return (

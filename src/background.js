@@ -19,7 +19,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
       const question = request.question;
       prevQA.push(question);
 
-      const url = `http://${process.env.ML_HOST}/answer`;
+      const url = `https://rphasearch.herokuapp.com/api/v1/answer`;
       const options = {
         method: "POST",
         headers: {

@@ -37,6 +37,7 @@
     "callsites": "^3.1.0",
     "caniuse-lite": "^1.0.30001297",
     "chalk": "^4.1.2",
+    "cheerio": "^1.0.0-rc.10",
     "chrome-trace-event": "^1.0.3",
     "clone-deep": "^4.0.1",
     "color-convert": "^2.0.1",

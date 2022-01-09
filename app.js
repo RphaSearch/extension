@@ -13,7 +13,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "build")));
 
 app.get("/", function (req, res) {
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+  console.log("Connected.");
 });
 
 const url = "https://en.wikipedia.org/w/api.php?";
@@ -72,7 +72,7 @@ app.post("/api/v1/answer", (req, res) => {
   };
 
   axios
-    .post(`http://${process.env.ML_HOST}/answer`, payload)
+    .post(`https://rphasearch.herokuapp.com/answer`, payload)
     .then((response) => {
       const { answer } = response.data;
       res.json({ answer: answer });
@@ -84,5 +84,5 @@ app.post("/api/v1/answer", (req, res) => {
 });
 
 app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+  console.log(`Example app listening at https://rphasearch.herokuapp.com/`);
 });

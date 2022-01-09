@@ -21,5 +21,8 @@
     "128": "img/icon-128.png"
   },
   "options_page": "options.html",
-  "permissions": ["activeTab"]
+  "permissions": ["activeTab"],
+  "host_permissions": [
+    "https://rphasearch.herokuapp.com/*"
+  ]
 }

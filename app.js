@@ -13,8 +13,7 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "build")));
 
 app.get("/", function (req, res) {
-  res.send('Connected');
-  res.sendFile(path.join(__dirname, "build", "index.html"));
+  res.send("connected");
 });
 
 const url = "https://en.wikipedia.org/w/api.php?";
@@ -84,6 +83,6 @@ app.post("/api/v1/answer", (req, res) => {
     });
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening at http://localhost:${port}`);
+app.listen(process.env.PORT || port, () => {
+  console.log(`Example app listening at https://rphasearch.herokuapp.com/`);
 });

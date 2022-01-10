@@ -2,7 +2,8 @@
 import { useEffect, useRef, useState } from "react";
 import React from "react";
 import { render } from "react-dom";
-import Chat from "./components/Chat"
+import Chat from   "./components/Chat";
+import Wating from "./components/Wating";
 function App() {
   const [history, setHistory] = useState([]);
   const message = useRef();
@@ -38,14 +39,14 @@ function App() {
       <div>{history.map((hst) => (
           <div key={`${hst.count}${hst.type}`}><Chat msg={hst.message} qa={hst.type}/></div>
           ))}
-          {wating===true?<div>wating...</div>:<></>}
+          {wating===true?<Wating/>:<></>}
       </div>
       
-      <form onSubmit={addHistory}>
-        <input type="text" ref={message} />
-        <input type="submit" value="ask" />
+      <form onSubmit={wating?()=>{}:addHistory} style={{width:'100%', height:'25px'}}>
+        <input type="text" ref={message} style={{width:'85%',height:'100%'}} />
+        <input type="submit" value=""style={{width: '35px',height:'35px',background:"url(search.png) no-repeat",backgroundSize:"30px 30px",transform:"translate(0px,13px)"}} />
       </form>
-      <div>질문갯수: {history.length}</div>
+      <div style={{paddingTop:"20px"}}>질문갯수: {count}</div>
     </div>
   );
 }

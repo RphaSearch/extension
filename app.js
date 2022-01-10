@@ -6,7 +6,7 @@ const axios = require("axios");
 const cheerio = require("cheerio");
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
@@ -14,52 +14,6 @@ app.use(express.static(path.join(__dirname, "build")));
 
 app.get("/", function (req, res) {
   res.send("connected");
-});
-
-const url = "https://en.wikipedia.org/w/api.php?";
-
-// /api/v1/context?q=query
-app.get("/api/v1/context", (req, res) => {
-  const query = req.query.q;
-
-  const searchParams = new URLSearchParams({
-    origin: "*",
-    action: "query",
-    list: "search",
-    srsearch: query,
-    srwhat: "text",
-    srlimit: "1",
-    format: "json",
-  });
-
-  axios
-    .get(url + searchParams)
-    .then((response) => {
-      response = response.data;
-
-      axios
-        .get(
-          "https://en.wikipedia.org/w/api.php?" +
-            new URLSearchParams({
-              origin: "*",
-              action: "parse",
-              page: `${response.query.search[0].title}`,
-              format: "json",
-            })
-        )
-        .then((response) => {
-          const html = response.data.parse.text["*"];
-          const $ = cheerio.load(html);
-          res.json({ context: $("p").text() });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    })
-    .catch((error) => {
-      console.log(error);
-      res.sendStatus(500);
-    });
 });
 
 app.post("/api/v1/answer", (req, res) => {
@@ -83,6 +37,6 @@ app.post("/api/v1/answer", (req, res) => {
     });
 });
 
-app.listen(process.env.PORT || port, () => {
-  console.log(`Example app listening at https://rphasearch.herokuapp.com/`);
+app.listen(port, () => {
+  console.log(`App listening at http://localhost:${port}`);
 });

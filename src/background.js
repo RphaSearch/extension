@@ -27,7 +27,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         { message: question, count: `-${count}`, type: "q" },
       ];
 
-      const url = `http://${process.env.ML_HOST}/answer`;
+      const url = `http://${process.env.HOST}/api/v1/answer`;
       const options = {
         method: "POST",
         headers: {
